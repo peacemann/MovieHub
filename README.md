@@ -1,6 +1,6 @@
 # MovieHub
 
-Movie overview and rating web application. Created using Python Flask Framework, Mysql and JS.
+Movie overview and rating web application. Created using Python Flask Framework, MySQL and JS.
 
 
 # Login 
