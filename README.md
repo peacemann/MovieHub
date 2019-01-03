@@ -1,4 +1,4 @@
 # MovieHub
 
-![](Untitled45.gif)
+![](Project-Overview.gif)
 
