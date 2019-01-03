@@ -1,0 +1,182 @@
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title> 
+
+<link rel="stylesheet" href="{{url_for('.static', filename='indexstyle.css')}}">
+<style type="text/css">
+
+a {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+/* line clipping */
+a {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+
+
+
+/*
+ * Formatting the header area
+ */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+background: #FC354C;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #0ABFBC, #FC354C);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #0ABFBC, #FC354C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+/*
+ * Formatting the header area
+ */
+
+header {
+ background-color: #130f40;
+background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+
+  height: 60px;
+  width: 100%;
+  opacity: .9;
+  margin-bottom: 10px;
+}
+header h1.logo {
+  margin: 0;
+  margin-top: 12px;
+  margin-left: 28px;
+  font-size: 1.7em;
+  color: #FF0000;
+  text-transform: uppercase;
+  float: left;
+}
+header h1.logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+/*
+ * Centering the body content
+ */
+
+div.home {
+  padding: 0px 0 20px 0;
+  background-color: #E6E6FA;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+div.about {
+  padding: 0px 0 20px 0;
+  background-color: #E6E6FA;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+h2 {
+  font-size: 3em;
+  margin-top: 5px;
+  text-align: center;
+  letter-spacing: -2px;
+}
+h3 {
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 5px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #999;
+}
+.menu {
+  float: right;
+  margin-top: 18px;
+  margin-left: 20px;
+}
+.menu li {
+  display: inline-block;
+}
+.menu li + li {
+  margin-left: 30px;
+}
+.menu li a {
+  color: #FF0000;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+
+
+</style>
+</head>
+  <header>
+      <div class="container" >
+        <h1 class="logo">Movie & HUB</h1>
+        <strong><nav>
+          <ul class="menu">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="">My List</a></li>
+            <li><a href="{{ url_for('avg') }}">Top Movies</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a href=""></a></li>
+
+          </ul>
+        </nav></strong>
+      </div>
+    </header>
+
+<body>
+
+<div class="wrapper">
+<!--   <h1>Welcome to MovieHUB</h1> -->
+  <div class="cols">
+
+
+  {% block mycard %}
+
+  {% for movie in movies %}
+            
+      <div class="col" ontouchstart="this.classList.toggle('hover');">
+        <div class="container">
+          <div class="front" style="background-image: url(https://image.tmdb.org/t/p/w200{{ (movie.poster) }})">
+            <div class="inner">
+              
+            </div>
+          </div>
+          <div class="back">
+            <div class="inner">
+              <a href="{{ url_for('themovie', movie_id=movie.id) }}" style="font-size:20px"><strong>{{ (movie.name) }}</strong></a>
+              <br>
+              <a href="{{ url_for('themovie', movie_id=movie.id) }}" class="myButton"><p style="font-size:12px">{{ (movie.overview) }}</p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  {% endfor %}
+
+{% endblock %}
+
+
+    </div>
+ </div>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}
